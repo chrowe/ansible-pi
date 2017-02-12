@@ -1,0 +1,10 @@
+---
+#- name: Install "nodered" package
+#  apt:
+#    name: nodered
+
+- name: Start Node-Red on boot    
+  service: 
+    name=nodered
+    state=started
+    enabled=yes
