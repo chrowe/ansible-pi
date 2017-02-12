@@ -8,7 +8,7 @@ There is a [complete guide to setting up your raspberry pi without a keyboard an
 
 ## Installation
 
-Clone and setup the ansible script. 
+1. Clone and setup the ansible script. 
 
 ```
 git clone https://github.com/motdotla/ansible-pi.git
@@ -17,12 +17,14 @@ cp hosts.example hosts
 cp wpa_supplicant.conf.example wpa_supplicant.conf
 ```
 
-Edit the `wpa_supplicant.conf` and `hosts` files.
+2. Edit the `wpa_supplicant.conf` and `hosts` files.
+  
+  `ping raspberrypi.local` to get the IP address of your pi
 
-Deploy using [ansible](http://www.ansible.com) (install instructions for ansible are in [requirements](#requirements) below).
+3. Deploy using [ansible](http://www.ansible.com) (install instructions for ansible are in [requirements](#requirements) below).
 
 ```
-ansible-playbook playbook.yml -i hosts --ask-pass --become -c paramiko
+ansible-playbook playbook.yml && say Ansible task complete
 ```
 
 ## Requirements
