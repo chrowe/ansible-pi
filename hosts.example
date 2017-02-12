@@ -1,2 +1,9 @@
-[webservers]
-192.168.1.200
+[test_pi]
+10.0.1.17
+
+[pis:children]
+test_pi
+
+[pis:vars]
+ansible_ssh_user=pi
+ansible_ssh_pass=raspberry
