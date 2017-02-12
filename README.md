@@ -10,12 +10,12 @@ There is a [complete guide to setting up your raspberry pi without a keyboard an
 
 1. Clone and setup the ansible script. 
 
-```
-git clone https://github.com/motdotla/ansible-pi.git
-cd ansible-pi
-cp hosts.example hosts
-cp wpa_supplicant.conf.example wpa_supplicant.conf
-```
+  ```
+  git clone https://github.com/motdotla/ansible-pi.git
+  cd ansible-pi
+  cp hosts.example hosts
+  cp wpa_supplicant.conf.example wpa_supplicant.conf
+  ```
 
 2. Edit the `wpa_supplicant.conf` and `hosts` files.
   
@@ -23,9 +23,9 @@ cp wpa_supplicant.conf.example wpa_supplicant.conf
 
 3. Deploy using [ansible](http://www.ansible.com) (install instructions for ansible are in [requirements](#requirements) below).
 
-```
-ansible-playbook playbook.yml && say Ansible task complete
-```
+  ```
+  ansible-playbook playbook.yml && say Ansible task complete
+  ```
 
 ## Requirements
 
