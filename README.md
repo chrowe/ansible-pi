@@ -27,6 +27,10 @@ There is a [complete guide to setting up your raspberry pi without a keyboard an
   ansible-playbook playbook.yml && say Ansible task complete
   ```
 
+## Usage
+
+View `http://[ip address]:1880/#` to see Node Red
+
 ## Requirements
 
 [Ansible](http://www.ansible.com/) is required. 
