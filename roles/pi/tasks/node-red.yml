@@ -1,7 +1,7 @@
 ---
-#- name: Install "nodered" package
-#  apt:
-#    name: nodered
+- name: Install "nodered" package
+  apt:
+    name: nodered
 
 - name: Start Node-Red on boot    
   service: 
