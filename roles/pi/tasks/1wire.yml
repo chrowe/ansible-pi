@@ -1,0 +1,8 @@
+---
+- name: Enable GPIO pins
+  blockinfile:
+    dest: /boot/config.txt
+    block: |  
+      # 1wire GPIO
+      dtoverlay=w1-gpio
+      gpiopin=4
