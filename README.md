@@ -24,7 +24,7 @@ There is a [complete guide to setting up your raspberry pi without a keyboard an
 3. Deploy using [ansible](http://www.ansible.com) (install instructions for ansible are in [requirements](#requirements) below).
 
   ```
-  ansible-playbook playbook.yml && say Ansible task complete
+  ansible-playbook playbook.yml -i hosts && say Ansible task complete
   ```
 
 ## Usage
