@@ -4,8 +4,6 @@
 
 Quickly setup your Raspberry Pi - particularly WIFI settings.
 
-There is a [complete guide to setting up your raspberry pi without a keyboard and mouse](http://sendgrid.com/blog/complete-guide-set-raspberry-pi-without-keyboard-mouse/) that goes along with this repo.
-
 ## Installation
 
 1. Clone and setup the ansible script. 
@@ -33,6 +31,8 @@ View `http://[ip address]:1880/#` to see Node Red
 
 ## Requirements
 
+Start here to get your OS burned on an sd card https://gist.github.com/chrowe/93022b145108071f8c058769111ebce9
+
 [Ansible](http://www.ansible.com/) is required. 
 
 ### Installing Ansible on Mac
@@ -50,4 +50,10 @@ sudo easy_install paramiko
 
 ## History
 
-This project was originally built when trying out my first Raspberry Pi. The setup process was not as easy as I wanted.
+* Based on https://github.com/motdotla/ansible-pi
+* Inspiration
+  * https://opensource.com/life/16/2/cluster-computing-with-ansible-and-raspberry-pi
+  * 
+* Previous notes
+  * https://gist.github.com/chrowe/fe8edd7553c678745f5f3ceff9a861a3
+  * 
