@@ -1,0 +1,7 @@
+---
+# how much memory should be owned by the GPU (vs RAM)
+raspi_config_memory_split_gpu: 16
+# set hostname
+raspi_config_hostname: pi6
+# set timezone
+raspi_config_timezone: EST

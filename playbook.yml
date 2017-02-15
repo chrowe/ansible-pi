@@ -5,5 +5,6 @@
   hosts: testpis
   roles:
     - pi
+    - mikolak.raspi-config
   remote_user: pi
   become: yes
