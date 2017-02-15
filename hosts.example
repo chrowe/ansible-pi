@@ -1,9 +1,27 @@
-[test_pi]
-10.0.1.17
+[pi1]
+custom.local
 
-[pis:children]
-test_pi
+[pi2]
+192.168.1.100
 
-[pis:vars]
+[pi3]
+raspberrypi.local
+
+[allpis:children]
+pi1
+pi2
+pi3
+
+[prodpis:children]
+pi1
+
+[testpis:children]
+pi2
+
+# Any new Raspberry Pis that don't have ssh an ssh key set up yet.
+[newpis:children]
+pi3
+
+[newpis:vars]
 ansible_ssh_user=pi
 ansible_ssh_pass=raspberry
