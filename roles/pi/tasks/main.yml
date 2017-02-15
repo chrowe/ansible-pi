@@ -12,6 +12,11 @@
 
 - name: 'Upgrade APT to the lastest packages'
   action: apt upgrade=safe
+  
+- name: 'Install packages'
+  apt:
+    name: vim
+
 - include: node-red.yml 
   tags: node-red
   
