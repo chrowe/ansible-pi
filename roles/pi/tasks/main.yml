@@ -2,6 +2,8 @@
 - set_fact:
     real_ansible_host: "{{ ansible_host }}"
 
+- include: ssh.yml
+
 - name: 'Configure WIFI'
   copy: src=./wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
 
