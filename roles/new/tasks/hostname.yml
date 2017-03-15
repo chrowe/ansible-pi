@@ -1,0 +1,21 @@
+#TODO: this is not being used yet. Ideally we would
+## Ask for the hostname when running `anewpi.sh` 
+## Use that to set the hostname
+## Add the hostname to the hosts file
+## Run the main setup script using that hostname (There is a way to set a variable from the connandline)
+
+---
+- set_fact:
+    real_ansible_host: "{{ ansible_host }}"
+    
+- name: Hostname
+  hostname:
+    name: '{{ hostname }}'
+    
+- name: Set hostname until reboot
+  command: hostname {{ hostname }}
+  become: true
+
+- name: "Wait for Raspberry PI to come back"
+  local_action: wait_for host={{ real_ansible_host }} port=22 state=started delay=10
+  become: false

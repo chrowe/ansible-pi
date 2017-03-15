@@ -1,0 +1,10 @@
+---
+- name: Add ssh key access to brand new Raspberry Pi
+
+  hosts: anewpi
+  roles:
+    - new
+  become: yes
+
+# Usage
+# ansible-playbook -i hosts new.yml

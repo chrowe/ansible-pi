@@ -4,12 +4,23 @@
 
 Quickly setup your Raspberry Pi - particularly WIFI settings.
 
+## Usage
+1. Create new sd card
+  - Etcher w/ latest Raspian lite
+  - `touch /Volumes/boot/ssh` //Enables ssh
+2. Connect a wifi adaptor to be configured
+3. Run `./scripts/anewpi.sh` to login to the new pi.
+  - Obviously you will have to connect it to the network and power it up.
+4. `sudo raspi-config` > "2 Hostname"
+5. Add hostname to `hosts`
+6. `ansible-playbook -i hosts playbook.yml`
+
 ## Installation
 
 1. Clone and setup the ansible script. 
 
   ```
-  git clone https://github.com/motdotla/ansible-pi.git
+  git clone https://github.com/chrowe/ansible-pi.git
   cd ansible-pi
   cp hosts.example hosts
   cp wpa_supplicant.conf.example wpa_supplicant.conf
