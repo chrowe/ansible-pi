@@ -2,18 +2,23 @@
 
 ![](https://raw.github.com/motdotla/ansible-pi/master/ansible-pi.jpg)
 
-Quickly setup your Raspberry Pi - particularly WIFI settings.
+Quickly setup your Raspberry Pi - particularly WIFI settings and NodeRED.
 
-## Usage
-1. Create new sd card
-  - Etcher w/ latest Raspian lite
-  - `touch /Volumes/boot/ssh` //Enables ssh
-2. Connect a wifi adaptor to be configured
-3. Run `./scripts/anewpi.sh` to login to the new pi.
-  - Obviously you will have to connect it to the network and power it up.
-4. `sudo raspi-config` > "2 Hostname"
-5. Add hostname to `hosts`
-6. `ansible-playbook -i hosts playbook.yml`
+## Requirements
+
+### Hardware
+1. A Raspberry Pi w/ associated power supply and SD card. 8GB recommended but 4GB should work.
+2. USB wifi adaptor. I recommend the [TL-WN722N V2](http://www.tp-link.com/us/download/TL-WN722N.html)
+
+### Software
+1. [Ansible](http://www.ansible.com/) is required. The [offical docs](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx) suggest using pip. I used [Homebrew](https://brew.sh/) `brew install ansible`
+2. Add an entry to your `~/.ssh/config` file
+```
+Host anewpi
+    Hostname raspberrypi.local
+    User pi
+    StrictHostKeyChecking no
+```
 
 ## Installation
 
@@ -25,39 +30,40 @@ Quickly setup your Raspberry Pi - particularly WIFI settings.
   cp hosts.example hosts
   cp wpa_supplicant.conf.example wpa_supplicant.conf
   ```
-
-2. Edit the `wpa_supplicant.conf` and `hosts` files.
   
-  `ping raspberrypi.local` to get the IP address of your pi
+2. Edit the `wpa_supplicant.conf`
+  - Replace `your_wifi_sid` with the name of your wifi network
+  - Replace `your_wifi_password` with the password for your wifi network
 
-3. Deploy using [ansible](http://www.ansible.com) (install instructions for ansible are in [requirements](#requirements) below).
-
-  ```
-  ansible-playbook playbook.yml -i hosts && say Ansible task complete
-  ```
+  
+Note: You can `ping raspberrypi.local` if you want to get the IP address of your pi.
 
 ## Usage
+### Setting up an new Pi
+1. Create new sd card
+  - I use [Etcher](https://etcher.io/) w/ latest [Raspian](https://www.raspberrypi.org/downloads/raspbian/) lite
+  - `touch /Volumes/boot/ssh` //Enables ssh
+2. Configure ssh and hostname so Ansible can connect
+  - Run `./scripts/anewpi.sh` to login to the new pi.
+  - Connect Pi to the network and power it up.
+    - Note: If you get a message `paramiko: The authenticity of host 'raspberrypi.local' can't be established.` just type `yes` and hit enter to continue.
+  - Note: You should now be logged into the Pi
+  - Run `sudo raspi-config` and choose "2 Hostname" to set a new hostname for your Pi. You will be prompted to reboot.
+  - Add the new hostname to `hosts`. for example
+    ```
+    [newname]
+    newhostname.local
+    ```
+  - Test that everything is working
+    - ssh `ssh pi@newhostname.local`
+    - ansible ``
+3. Run Ansible to setup everything else 
+  - In `playbook.yml` change `hosts` to match the `newname` you just gave your Pi.
+  - `ansible-playbook -i hosts playbook.yml`
 
-View `http://[ip address]:1880/#` to see Node Red
+## Accessing NodeRED
 
-## Requirements
-
-Start here to get your OS burned on an sd card https://gist.github.com/chrowe/93022b145108071f8c058769111ebce9
-
-[Ansible](http://www.ansible.com/) is required. 
-
-### Installing Ansible on Mac
-
-```
-cd /tmp
-git clone git://github.com/ansible/ansible.git
-cd ./ansible
-git checkout v1.4.3
-sudo make install
-sudo easy_install jinja2 
-sudo easy_install pyyaml
-sudo easy_install paramiko
-```
+View `http://[newname]:1880/#` to see Node Red
 
 ## History
 
@@ -68,3 +74,5 @@ sudo easy_install paramiko
 * Previous notes
   * https://gist.github.com/chrowe/fe8edd7553c678745f5f3ceff9a861a3
   * 
+
+
