@@ -6,3 +6,9 @@
       # 1wire GPIO
       dtoverlay=w1-gpio
       gpiopin=4
+
+- name: Install "node-red-contrib-1wire".
+  npm:
+    name: node-red-contrib-1wire
+    global: yes
+  tags: new

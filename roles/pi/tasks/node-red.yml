@@ -1,7 +1,9 @@
 ---
-- name: Install "nodered" package
-  apt:
-    name: nodered
+- name: 'Install "nodered" and related packages'
+  apt: name={{item}} state=installed
+  with_items:
+    - nodered
+    - npm
 
 - name: Start Node-Red on boot    
   service: 
