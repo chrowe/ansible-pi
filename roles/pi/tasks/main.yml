@@ -2,7 +2,9 @@
 - set_fact:
     real_ansible_host: "{{ ansible_host }}"
 
-- include: ssh.yml
+- name: 'Set timezone'
+  timezone:
+    name: America/New_York
 
 - name: 'Configure WIFI'
   copy: src=./wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
@@ -14,21 +16,18 @@
   action: apt upgrade=safe
   
 - name: 'Install packages'
-  apt:
-    name: vim
+  apt: name={{item}} state=installed
+  with_items:
+    - vim
+
+- include: 1wire.yml 
+  tags: 1wire
 
 - include: node-red.yml 
   tags: node-red
   
-- include: 1wire.yml 
-  tags: 1wire, new
-
 - name: 'Reboot'
   shell: sleep 2 && reboot
   async: 1
   poll: 0
   ignore_errors: true
-
-- name: "Wait for Raspberry PI to come back"
-  local_action: wait_for host={{ real_ansible_host }} port=22 state=started delay=10
-  become: false
