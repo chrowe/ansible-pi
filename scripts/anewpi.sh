@@ -16,6 +16,6 @@ done
 ansible-playbook -i hosts new.yml 
 #--extra-vars "hostname=$hostname"
 
-ssh pi@raspberrypi.local
+ssh anewpi
 
 #echo "You can now connect to Node-RED at $hostname.local:1880"
