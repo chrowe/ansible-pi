@@ -7,3 +7,6 @@
     - pi
   remote_user: pi
   become: yes
+
+# Usage
+# ansible-playbook -i hosts playbook.yml
