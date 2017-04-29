@@ -19,6 +19,11 @@ Host anewpi
     User pi
     StrictHostKeyChecking no
 ```
+3. Add entry to your `~/.ansible.cfg` file
+```
+[defaults]
+host_key_checking = False
+```
 
 ## Installation
 
