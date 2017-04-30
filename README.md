@@ -62,9 +62,17 @@ Note: You can `ping raspberrypi.local` if you want to get the IP address of your
   - Test that everything is working
     - ssh `ssh pi@newhostname.local`
     - ansible ``
-3. Run Ansible to setup everything else 
+3. Set up Pagekite
+    - `cp pagekite_10_account.rc.example pagekite_10_account.rc`
+    - Change `NAME` and `YOURSECRET` to your desired values. See https://pagekite.net/home/
+
+4. Run Ansible to setup everything else 
   - In `playbook.yml` change `hosts` to match the `newname` you just gave your Pi.
   - `ansible-playbook -i hosts playbook.yml`
+
+## Using Pagekite
+
+See http://pagekite.net/wiki/Howto/SshOverPageKite/ for how to set up ssh on your local machine. 
 
 ## Accessing NodeRED
 

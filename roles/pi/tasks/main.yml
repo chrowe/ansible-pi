@@ -27,7 +27,6 @@
   tags: 1wire
   
 - include: pagekite.yml
-  tags: new
   
 - name: 'Reboot'
   shell: sleep 2 && reboot

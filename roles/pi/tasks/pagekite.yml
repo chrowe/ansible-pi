@@ -14,3 +14,16 @@
     name: pagekite 
     state: installed
     allow_unauthenticated: yes
+    
+- name: Configure Pagekite account
+  copy: src=./pagekite_10_account.rc dest=/etc/pagekite.d/10_account.rc mode=0600
+
+- name: Configure Pagekite
+  command: mv /etc/pagekite.d/80_sshd.rc.sample /etc/pagekite.d/80_sshd.rc
+  
+- name: Restart Pagekite
+  service:
+    name: pagekite
+    state: restarted
+  tags: new
+  
