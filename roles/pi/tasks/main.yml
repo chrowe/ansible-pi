@@ -20,11 +20,14 @@
   with_items:
     - vim
 
-- include: 1wire.yml 
-  tags: 1wire
-
 - include: node-red.yml 
   tags: node-red
+  
+- include: 1wire.yml 
+  tags: 1wire
+  
+- include: pagekite.yml
+  tags: new
   
 - name: 'Reboot'
   shell: sleep 2 && reboot

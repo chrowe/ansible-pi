@@ -1,0 +1,16 @@
+---
+- name: Add Pagekite source
+  apt_repository:
+    repo: deb http://pagekite.net/pk/deb/ pagekite main
+    state: present
+
+- name: Add PageKite packaging key
+  apt_key:
+    keyserver: keys.gnupg.net
+    id: AED248B1C7B2CAC3
+
+- name: Install Pagekite
+  apt: 
+    name: pagekite 
+    state: installed
+    allow_unauthenticated: yes
