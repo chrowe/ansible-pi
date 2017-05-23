@@ -1,0 +1,13 @@
+---
+- name: Install Munin on central server.
+  hosts: pig
+  remote_user: pi
+  become: yes
+  vars_files:
+    - ../roles/geerlingguy.apache/vars/main.yml
+  roles:
+    - geerlingguy.apache
+    - geerlingguy.munin
+  tasks:
+    - name: ping
+      ping:

@@ -1,0 +1,3 @@
+- src: mikolak.raspi-config
+- src: geerlingguy.apache
+- src: geerlingguy.munin
