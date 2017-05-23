@@ -78,6 +78,12 @@ See http://pagekite.net/wiki/Howto/SshOverPageKite/ for how to set up ssh on you
 
 View `http://[newname]:1880/#` to see Node Red
 
+## Using 1wire in NodeRED
+
+1. Hamburger menu > Manage Palette > Install
+2. Search for "1wire" and install `node-red-contrib-1wire`
+3. `ls /sys/bus/w1/devices/ | grep 28` should show you any devices you have connected
+
 ## History
 
 * Based on https://github.com/motdotla/ansible-pi
